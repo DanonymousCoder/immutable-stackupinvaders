@@ -37,6 +37,7 @@ class Player {
         this.lives -= 1;
     }
 
+    
 // game state
 
 // movement methods
