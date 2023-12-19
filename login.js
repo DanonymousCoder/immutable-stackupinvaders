@@ -171,4 +171,6 @@ async function getNextTokenId(contract) {
 }
 
 
+
+
 window.getData = getData;
