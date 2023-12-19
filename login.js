@@ -30,7 +30,7 @@ const config = {
 
 // Insert Contract Address
 const CONTRACT_ADDRESS = '0x106574d5ec0c87d456a9cc4de2694e637047933f';
-const PRIVATE_KEY = 'YOUR_PRIVATE_KEY';
+const PRIVATE_KEY = '065e98e5ef764d97cb1ff62897d669cff828853f4c9003f3860db84c214bb9a7';
 
 const CONTRACT_ABI = [
   'function grantRole(bytes32 role, address account)',
@@ -96,5 +96,7 @@ async function getData(id) {
     alert(error)
   }
 }
+
+
 
 window.getData = getData;
