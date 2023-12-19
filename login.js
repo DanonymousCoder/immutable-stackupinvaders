@@ -58,4 +58,26 @@ async function getData(id) {
         }
       };
 
-      
+      const details = nftDetails[id.toString()];
+
+      if (!details) {
+        throw new Error("Invalid Token ID");
+      }
+  
+      nft.innerHTML = `
+      <div class="alert alert-success"> Great Score! Claim this NFT, then resume the game.</div>
+      <div class="card" >
+      <div class="card-body">
+        <div class="media">
+          <img src='${details.image}' class="mr-3 img-thumbnail" alt="nft" style="width: 30%;">
+          <div class="media-body">
+            <h5 class="card-title">${details.name}</h5>
+            <p class="card-text">'${details.description}'</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <button id="claim-btn" class="btn btn-success"> Claim</button>
+      </div>
+    </div>
+      `;
