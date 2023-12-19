@@ -89,3 +89,43 @@ function resumeGame() {
   nft.innerHTML = ""
 }
 
+function draw() {
+    if (gameOver) {
+      showGameOver();
+    } else if (window?.userProfile?.email) {
+      if (!player.gamePaused) {
+        background(0);
+        player.update();
+        updateDebrisAndCheckCollisions();
+        invaders.update(player);
+      }
+  
+      player.draw();
+      player.drawInfo();
+      invaders.draw();
+      
+      // Check if the game needs to be paused
+      if (player.gamePaused && resumeButton.elt.style.display=== 'none') {
+        console.log('Pausing game, showing resume button');
+        noLoop();
+        resumeButton.show();
+      }
+      
+      if (player.lives == 0) {
+        gameOver = true;
+      }
+    } else {
+      connectToStart();
+    }
+  
+    // Update button visibility based on authentication status
+    document.getElementById('btn-passport').hidden = window?.userProfile?.email;
+    document.getElementById('btn-logout').hidden = !window?.userProfile?.email;
+  }
+  
+  function mousePressed() {
+    if (gameOver === true) {
+      gameOver = false;
+      setup();
+    }
+  }
