@@ -18,4 +18,5 @@ class Debris {
         this.isGoingLeft = true;
       }
     }
+
     
