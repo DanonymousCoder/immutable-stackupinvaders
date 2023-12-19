@@ -96,3 +96,43 @@ class Invaders {
         }
         return allXPositions
     }
+
+    nextLevel() {
+        this.speed += 0.2;
+        this.aliens = this.initialiseAliens();
+    }
+
+    initialiseAliens() {
+        let aliens = [];
+        let y = 40;
+        for (let i = 0; i < this.rowsCount; i++) {
+            for (let x = 40; x < width - 40; x += 30) {
+                aliens.push(new Alien(x, y, this.alienImage));
+            }
+            y += 40;
+        }
+        return aliens;
+    }
+
+    draw() {
+      for (let bullet of this.bullets) {
+          fill('#f30000')
+          rect(bullet.x, bullet.y,  4, 10);
+      }
+      
+      for (let alien of this.aliens) {
+          alien.draw();
+      }
+    }
+  
+    checkCollision(x, y) {
+      for (let i = this.aliens.length - 1; i >= 0; i--) {
+          let currentAlien = this.aliens[i];
+          if (dist(x, y, currentAlien.x + 11.5, currentAlien.y + 8) < 10) {
+              this.aliens.splice(i, 1);
+              return true;
+          }
+      }
+      return false;
+    }
+  
