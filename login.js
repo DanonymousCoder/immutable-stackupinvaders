@@ -22,4 +22,8 @@ const config = {
       window.userProfile = await window.passport.getUserInfo();
   }
   
-  
+  const passportLogout = async function(){
+    let logout = await window.passport.logout();
+    console.log(logout, "logout");
+    window.userProfile = {};
+}
