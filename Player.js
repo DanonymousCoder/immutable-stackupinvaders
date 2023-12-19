@@ -37,7 +37,10 @@ class Player {
         this.lives -= 1;
     }
 
-    
+    upgradeSpaceship() {
+        this.image = loadImage('playerv2.png');
+        this.maxBullets = 4;
+    }
 // game state
 
 // movement methods
