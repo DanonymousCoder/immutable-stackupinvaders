@@ -19,4 +19,15 @@ class Debris {
       }
     }
 
-    
+    update() {
+        if (this.isGoingLeft) {
+            this.x --;
+        } else {
+            this.x ++;
+        }
+        
+        if (this.isOffScreen()) {
+            this.resetDebris();
+        }
+      }
+      
