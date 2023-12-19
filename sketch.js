@@ -88,3 +88,4 @@ function resumeGame() {
   let nft = document.getElementById("nft");
   nft.innerHTML = ""
 }
+
