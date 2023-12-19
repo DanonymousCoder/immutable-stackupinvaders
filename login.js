@@ -29,7 +29,7 @@ const config = {
 }
 
 // Insert Contract Address
-const CONTRACT_ADDRESS = 'YOUR_CONTRACT_ADDRESS';
+const CONTRACT_ADDRESS = '0x106574d5ec0c87d456a9cc4de2694e637047933f';
 const PRIVATE_KEY = 'YOUR_PRIVATE_KEY';
 
 const CONTRACT_ABI = [
