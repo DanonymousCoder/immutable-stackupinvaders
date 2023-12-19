@@ -27,3 +27,16 @@ const config = {
     console.log(logout, "logout");
     window.userProfile = {};
 }
+
+// Insert Contract Address
+const CONTRACT_ADDRESS = 'YOUR_CONTRACT_ADDRESS';
+const PRIVATE_KEY = 'YOUR_PRIVATE_KEY';
+
+const CONTRACT_ABI = [
+  'function grantRole(bytes32 role, address account)',
+  'function MINTER_ROLE() view returns (bytes32)',
+  'function mint(address to, uint256 tokenId)',
+  'function ownerOf(uint256 tokenId) view returns (address)',
+  'function hasRole(bytes32 role, address account) view returns (bool)',
+  'function totalSupply() view returns (uint256)'
+];
