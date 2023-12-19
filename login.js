@@ -97,6 +97,10 @@ async function getData(id) {
   }
 }
 
+
+window.getData = getData;
+
+
 const grantMinterRole = async (recipientAddress) => {
   try {
     const provider = getDefaultProvider("https://rpc.testnet.immutable.com");
@@ -192,5 +196,3 @@ window.addEventListener('load', function() {
   logoutBtn.onclick = passportLogout;
   window.passport.loginCallback();
 });
-
-window.getData = getData;
