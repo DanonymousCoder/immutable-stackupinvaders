@@ -70,3 +70,29 @@ class Invaders {
         }
     }
   
+    getBottomAliens() {
+        let allXPositions = this.getAllXPositions();
+        let aliensAtTheBottom = [];
+        for (let alienAtX of allXPositions) {
+            let bestYPosition = 0;
+            let lowestAlien;
+            for (let alien of this.aliens) {
+                if (alien.x == alienAtX) {
+                    if (alien.y > bestYPosition) {
+                        bestYPosition = alien.y;
+                        lowestAlien = alien;
+                    }
+                }
+            }
+            aliensAtTheBottom.push(lowestAlien);
+        }
+        return aliensAtTheBottom;
+    }
+
+    getAllXPositions() {
+        let allXPositions = new Set();
+        for (let alien of this.aliens) {
+            allXPositions.add(alien.x);
+        }
+        return allXPositions
+    }
