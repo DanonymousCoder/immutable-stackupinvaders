@@ -182,4 +182,21 @@ drawInfo() {
     pop();
     this.drawLives(bounty_text_w + textWidth(this.score) + 100)
 }
+
+
 // helper functions
+
+hasHitAlien(bullet) {
+    return invaders.checkCollision(bullet.x, bullet.y);
+}
+
+playerIsUp(){
+    return this.y > invaders.aliens[0].y;
+}
+
+loseLife(){
+    if(this.lives > 0){
+        this.respawn();
+    }
+}
+}
