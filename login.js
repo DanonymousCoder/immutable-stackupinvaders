@@ -82,4 +82,17 @@ async function getData(id) {
     </div>
       `;
 
-      
+      const claimBtn = this.document.getElementById('claim-btn');
+    claimBtn.onclick = async function(){
+      if (id === '1') {
+        await mintNft();
+      } else if (id === '2') {
+        await refreshNft();
+      }
+    }
+    return details;
+  } catch (error) {
+    console.error(error);
+    alert(error)
+  }
+}
