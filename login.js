@@ -22,3 +22,4 @@ const config = {
       window.userProfile = await window.passport.getUserInfo();
   }
   
+  
