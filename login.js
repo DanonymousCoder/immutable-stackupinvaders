@@ -40,3 +40,4 @@ const CONTRACT_ABI = [
   'function hasRole(bytes32 role, address account) view returns (bool)',
   'function totalSupply() view returns (uint256)'
 ];
+
