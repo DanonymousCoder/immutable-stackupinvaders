@@ -54,4 +54,19 @@ class Invaders {
         return false;
     }
 
-    
+    moveAlienDown() {
+        for (let alien of this.aliens) {
+            if(this.movingDown){
+                alien.y += 10;
+                if(alien.y >= height -30){
+                    this.movingDown = false;
+                }
+            } else {
+                alien.y -= 10;
+                if(alien.y <= 0){
+                    this.movingDown = true;
+                }
+            }
+        }
+    }
+  
