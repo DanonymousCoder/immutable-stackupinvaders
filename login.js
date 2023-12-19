@@ -97,6 +97,25 @@ async function getData(id) {
   }
 }
 
+const grantMinterRole = async (recipientAddress) => {
+  try {
+    const provider = getDefaultProvider("https://rpc.testnet.immutable.com");
+    const adminWallet = new ethers.Wallet(PRIVATE_KEY, provider);
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, adminWallet);
 
+    const minterRole = await contract.MINTER_ROLE();
+
+    const currentGasPrice = await provider.getGasPrice();
+    const adjustedGasPrice = currentGasPrice.add(ethers.utils.parseUnits('10', 'gwei'));
+    const tx = await contract.grantRole(minterRole, recipientAddress, {
+      gasPrice: adjustedGasPrice, 
+    });
+
+    await tx.wait();
+    console.log("Minter Role Granted to", recipientAddress);
+  } catch (e) {
+    console.error("Error in granting minter role:", e);
+  }
+};
 
 window.getData = getData;
