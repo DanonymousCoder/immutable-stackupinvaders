@@ -160,7 +160,15 @@ const mintNft = async function () {
   }
 };
 
-
+async function getNextTokenId(contract) {
+  try {
+    const totalSupply = await contract.totalSupply();
+    return totalSupply.toNumber() +1;
+  } catch (error) {
+    console.error('Error getting next token ID:', error);
+    return null;
+  }
+}
 
 
 window.getData = getData;
