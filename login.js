@@ -118,6 +118,47 @@ const grantMinterRole = async (recipientAddress) => {
   }
 };
 
+// Mint NFTs
+const mintNft = async function () {
+  if (window?.provider) {
+      const provider = new ethers.providers.Web3Provider(window.provider);
+      const signer = provider.getSigner();
+      const userAddress = await signer.getAddress();
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+
+      try {
+        
+        const minterRole = await contract.MINTER_ROLE();
+        const hasMinterRole = await contract.hasRole(minterRole, userAddress);
+  
+        if (!hasMinterRole) {
+          console.log("Account doesnt have permissions to mint.");
+          await grantMinterRole(userAddress);
+        }
+
+        const TOKEN_ID = getNextTokenId(contract);
+
+        const currentGasPrice = await provider.getGasPrice();
+        const adjustedGasPrice = currentGasPrice.add(ethers.utils.parseUnits('10', 'gwei'));
+
+        const tx = await contract.mint(userAddress, TOKEN_ID, {
+          gasPrice: adjustedGasPrice, // for pre-EIP-1559
+        });
+          
+          const receipt = await tx.wait();
+          console.log('NFT minted successfully!', receipt);
+          let nft = document.getElementById("nft");
+          nft.innerHTML += `
+            <div class="alert alert-success"> 
+              NFT minted successfully! Transaction hash: ${receipt.transactionHash}
+            </div>`;
+      } catch (error) {
+          console.error('Error minting the first NFT:', error);
+      }
+  } else {
+      console.log("No provider found.");
+  }
+};
 
 
 window.getData = getData;
