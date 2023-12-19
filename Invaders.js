@@ -136,3 +136,19 @@ class Invaders {
       return false;
     }
   
+    makeABottomAlienShoot(bottomAliens) {
+        let shootingAlien = random(bottomAliens);
+        let bullet = new AlienBullet(shootingAlien.x + 10, shootingAlien.y + 10);
+        this.bullets.push(bullet);
+        this.timeSinceLastBullet = 0;
+      }
+    
+       updateBullets(player) {
+          for (let i = this.bullets.length - 1; i >= 0; i-- ) {
+              this.bullets[i].y  += 2;
+              if(this.bullets[i].hasHitPlayer(player)){
+                  player.loseLife();
+              }
+          }
+      }
+  }
