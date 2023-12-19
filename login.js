@@ -96,3 +96,4 @@ async function getData(id) {
     alert(error)
   }
 }
+
