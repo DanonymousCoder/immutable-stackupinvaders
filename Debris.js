@@ -31,3 +31,25 @@ class Debris {
         }
       }
       
+      isOffScreen() {
+        if (this.isGoingLeft && this.x < -5) {
+            return true;
+        } else if(!this.isGoingLeft && this.x > width + 5) {
+            return true;
+        }
+        return false;
+      }
+      
+      display() {
+          fill(100);
+          noStroke();
+          ellipse(this.x, this.y, this.r * 2, this.r * 2);
+      }
+      
+      hasHitPlayer(player) {
+          if (dist(this.x, this.y, player.x, player.y) < this.r + player.r) {
+            return true;
+        }
+        return false
+      }
+    }
