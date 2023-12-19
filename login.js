@@ -57,3 +57,5 @@ async function getData(id) {
           description: 'This NFT represents your second accomplishment on StackUp Invaders which grants you an upgraded spaceship.'
         }
       };
+
+      
