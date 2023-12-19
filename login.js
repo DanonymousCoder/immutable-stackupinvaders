@@ -41,3 +41,19 @@ const CONTRACT_ABI = [
   'function totalSupply() view returns (uint256)'
 ];
 
+async function getData(id) {
+    try {
+      let nft = document.getElementById("nft");
+  
+      const nftDetails = {
+        '1': {
+          image: 'https://bafkreigugjgtcvkwg7ym7uk5ic65wmtkmbngonaj3twzl3nttuj5w7zjku.ipfs.nftstorage.link/',
+          name: 'Level 1 Badge',
+          description: 'This NFT represents your first accomplishment on StackUp Invaders.'
+        },
+        '2': {
+          image: 'https://bafkreifxbz53txersuyqok75dmdhyrnfkascznytyvum2i25bunii5dih4.ipfs.nftstorage.link/',
+          name: 'Level 2 Badge',
+          description: 'This NFT represents your second accomplishment on StackUp Invaders which grants you an upgraded spaceship.'
+        }
+      };
