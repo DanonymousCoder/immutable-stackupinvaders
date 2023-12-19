@@ -170,7 +170,14 @@ async function getNextTokenId(contract) {
   }
 }
 
-
+const upgradeNft = async function () {
+  const upgradeEvent = new CustomEvent('upgradeSpaceship');    
+  window.dispatchEvent(upgradeEvent);
+  nft.innerHTML += `
+            <div class="alert alert-success"> 
+              Your spaceship has been upgraded! At this stage, there is no NFT.
+            </div>`;
+};
 
 
 window.getData = getData;
