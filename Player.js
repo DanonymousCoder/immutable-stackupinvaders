@@ -88,8 +88,40 @@ class Player {
         }
     }
 
-    
+
 // movement methods
+
+
+moveLeft() {
+    this.isMovingRight = false;
+    this.isMovingLeft = true;
+}
+
+moveRight() {
+    this.isMovingLeft = false;
+    this.isMovingRight = true;
+}
+
+moveUp(){
+    this.isMovingUp = true;
+    this.isMovingDown = false;
+}
+
+moveDown(){
+    this.isMovingUp = false;
+    this.isMovingDown = true;
+}
+
+    shoot() {
+        const bulletOffset = 5;
+        if (this.bullets.length < this.maxBullets) {
+            this.bullets.push(new PlayerBullet(this.x + this.r, this.y, this.playerIsUp()));
+
+            if (this.maxBullets > 2) {
+                this.bullets.push(new PlayerBullet(this.x - this.r + bulletOffset * 2, this.y, this.playerIsUp()))
+            }
+        }
+    }
 
 // drawing methods
 
