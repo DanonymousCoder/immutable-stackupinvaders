@@ -78,6 +78,16 @@ class Player {
         this.gamePaused = true;
         this.showNft(tokenId);
     }
+
+
+    resumeGame() {
+        this.gamePaused = false;
+        this.resumeCount++;
+        if (this.resumeCount === 2) { 
+            this.upgradeSpaceship();
+        }
+    }
+
     
 // movement methods
 
