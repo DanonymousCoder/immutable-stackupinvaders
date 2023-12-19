@@ -161,4 +161,6 @@ const mintNft = async function () {
 };
 
 
+
+
 window.getData = getData;
