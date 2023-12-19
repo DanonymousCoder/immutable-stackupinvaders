@@ -129,3 +129,36 @@ function draw() {
       setup();
     }
   }
+
+  function keyPressed() {
+    if (keyCode === RIGHT_ARROW || keyCode == 88) {
+      player.moveRight();
+    } else if (keyCode === LEFT_ARROW || keyCode == 90) {
+      player.moveLeft();
+    } else if (keyCode === 32) {
+      player.shoot();
+    }
+  
+    if (keyCode === UP_ARROW) {
+      player.moveUp()
+    } else if (keyCode == DOWN_ARROW) {
+      player.moveDown();
+    }
+  }
+  
+  function updateDebrisAndCheckCollisions() {
+    for (let i = 0; i < allDebris.length; i++) {
+      allDebris[i].update();
+      allDebris[i].display();
+  
+      if (allDebris[i].hasHitPlayer(player)) {
+        allDebris.splice(i, 1);
+        player.loseLife();
+        break;
+      }
+    }
+  }
+  function windowResized() {
+    resizeCanvas(canvasEl.offsetWidth, 400)
+    background(0)
+  }
