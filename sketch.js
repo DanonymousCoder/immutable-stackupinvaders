@@ -10,3 +10,4 @@ let loading = 10;
 let loadingPlus = true;
 let resumeButton;
 let upgradedShooterImage;
+
