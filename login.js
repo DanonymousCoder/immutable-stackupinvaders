@@ -97,3 +97,4 @@ async function getData(id) {
   }
 }
 
+window.getData = getData;
