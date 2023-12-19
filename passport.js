@@ -4,7 +4,7 @@ window.passport = new window.immutable.passport.Passport({
     }),
     clientId: '2EMwHUNVzJTJZEErVwtJqQAUcR7Lu7f5',
     redirectUri: 'redirect-url',
-    logoutRedirectUri: 'logout-url',
+    logoutRedirectUri: 'https://definitely-new-escargot.ngrok-free.app/logout.html',
     audience: 'platform_api',
     scope: 'openid offline_access email transact'
   });
