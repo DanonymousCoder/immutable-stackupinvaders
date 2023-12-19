@@ -125,4 +125,61 @@ shoot() {
 
 // drawing methods
 
+draw() {
+    image(this.image, this.x, this.y, this.r * 2, this.r * 2);
+    this.drawBullets();
+    this.drawGas();
+
+if(this.score == 50 && !this.nftShown['1']){
+    this.gamePaused = true;
+    this.pauseGame('1')
+}
+else if (this.score == 100 && !this.nftShown['2']) {
+    this.gamePaused = true;
+    this.pauseGame('2');
+}
+}
+
+drawBullets() {
+for (let bullet of this.bullets) {
+    bullet.draw();
+}
+}
+
+drawGas(){
+let blocks = 8;
+let blockW = this.r/2;
+let blockH = this.r/3;
+
+for (let i = 0; i < blocks; i++) {
+    let currentW = blockW - i + 2;
+    let px = this.x + blockW * 2 - currentW / 2;
+    if(this.isMovingLeft === true){
+        px +=2 * i + 1;
+    } else if(this.isMovingRight === true){
+        px -= 2 * i + 1;
+    }
+
+    fill(245, random(150,220), 66);
+    rect(px + random(-2, 2), this.y + this.r*2  + i * blockH + 4 + random(-2, 2), currentW, blockH);
+}
+}
+
+drawLives(t_width) {
+    for (let i = 0; i < this.lives; i++) {
+        image(this.image, width - (i + 1) * 30, 10, this.r * 2, this.r * 2);
+    }
+}
+
+drawInfo() {
+    fill(255)
+    let bounty_text = window?.userProfile?.email + ": ";
+    let bounty_text_w = textWidth(bounty_text);
+    let score = text(bounty_text, 50, 25);
+    push();
+    fill(100, 255, 100);
+    text(this.score, bounty_text_w + 50, 25);
+    pop();
+    this.drawLives(bounty_text_w + textWidth(this.score) + 100)
+}
 // helper functions
